@@ -21,14 +21,14 @@
                         <div class="card-body">
                             <h1>Login</h1>
                             <p class="text-muted">Sign In to your account</p>
-                            <form actions="" method="POST">
+                            <form action="<?= base_url('admin/login') ?>" method="POST">
                                 <div class="input-group mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">
                                             <i class="icon-user"></i>
                                         </span>
                                     </div>
-                                    <input class="form-control" type="text" placeholder="Username">
+                                    <input class="form-control" name="username" type="text" placeholder="Username">
                                 </div>
                                 <div class="input-group mb-4">
                                     <div class="input-group-prepend">
@@ -36,12 +36,12 @@
                                             <i class="icon-lock"></i>
                                         </span>
                                     </div>
-                                    <input class="form-control" type="password" placeholder="Password">
+                                    <input class="form-control" name="password" type="password" placeholder="Password">
                                 </div>
                                 <div class="row">
                                     <div class="col-6">
-                                        <a href="<?= base_url() ?>admin/index" class="btn btn-primary px-4">Login</a>
-                                        <!-- <input class="btn btn-primary px-4" name="login" type="submit" value="Login"> -->
+                                        <!-- <a href="<?= base_url() ?>admin/index" class="btn btn-primary px-4">Login</a> -->
+                                        <input class="btn btn-primary px-4" name="login" type="submit" value="Login">
                                     </div>
                                 </div>
                             </form>
