@@ -54,3 +54,7 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['admin/products'] = 'Products/index';
+$route['admin/category'] = 'Category/index';
+$route['admin/category/delete/(:num)'] = 'Category/deleteCategory/$1';
+$route['admin/category/update/(:num)'] = 'Category/editCategory/$1';
+

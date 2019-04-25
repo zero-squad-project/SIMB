@@ -12,6 +12,11 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="<?= base_url() ?>admin/category">
+                    <i class="nav-icon fa fa-list"></i> Category
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="<?= base_url() ?>admin/transaction">
                     <i class="nav-icon fa fa-file"></i> Report
                 </a>
