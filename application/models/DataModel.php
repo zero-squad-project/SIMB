@@ -1,6 +1,7 @@
 <?php
 
-class DataModel extends CI_Model {
+class DataModel extends CI_Model
+{
 
     function custom($q)
     {
@@ -8,55 +9,64 @@ class DataModel extends CI_Model {
         return $query;
     }
 
-    function select($col){
+    function select($col)
+    {
         $query = $this->db->select($col);
         return $query;
     }
-    
-    function getWhere($col,$kon){
-        $query = $this->db->where($col,$kon);
+
+    function getWhere($col, $kon)
+    {
+        $query = $this->db->where($col, $kon);
         return $query;
     }
 
-    function getWhereArr($array){
+    function getWhereArr($array)
+    {
         $query = $this->db->where($array);
         return $query;
     }
-    
-    function getData($table){
+
+    function getData($table)
+    {
         $query = $this->db->get($table);
         return $query;
     }
 
-    function getJoin($table,$condition,$type){
+    function getJoin($table, $condition, $type)
+    {
         $query = $this->db->join($table, $condition, $type);
         return $query;
     }
 
-    function distinct($col) {
+    function distinct($col)
+    {
         $query = $this->db->distinct();
         $query = $this->db->select($col);
         return $query;
     }
 
-    function insert($table,$data){
-        $query = $this->db->insert($table,$data);
+    function insert($table, $data)
+    {
+        $query = $this->db->insert($table, $data);
         return $query;
     }
 
-    function update($table,$data) {
+    function update($table, $data)
+    {
         $query = $this->db->update($table, $data);
         return $query;
     }
 
-    function delete($col, $condition,$table) {
+    function delete($col, $condition, $table)
+    {
         $query = $this->db->where($col, $condition);
         $query = $this->db->delete($table);
         return $query;
     }
-    
-    function Login($table, $where) {
+
+    function Login($table, $where)
+    {
         return $this->db->get_where($table, $where);
     }
-
 }

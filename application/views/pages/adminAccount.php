@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta name="description" content="SIMB Project">
     <meta name="author" content="Zero Squad">
-    <title>Category Page</title>
+    <title>Admin Account</title>
     <?php $this->load->view('assets/stylesheet') ?>
 </head>
 
@@ -23,7 +23,7 @@
                 <li class="breadcrumb-item">
                     <a href="#">Admin</a>
                 </li>
-                <li class="breadcrumb-item active">Category</li>
+                <li class="breadcrumb-item active">Admin Account</li>
                 <!-- Breadcrumb Menu-->
                 <li class="breadcrumb-menu d-md-down-none">
                     <div class="btn-group" role="group" aria-label="Button group">
@@ -42,32 +42,35 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <a href="<?php echo base_url('Category/addCategory') ?>"><i
-                                        class="nav-icon fa fa-plus"></i> Add Category</a>
+                                <a href="<?php echo base_url('Admin/addAdminAccount') ?>"><i
+                                        class="nav-icon fa fa-plus"></i> Add
+                                    Admin Account</a>
                             </div>
                             <div class="card-body">
                                 <table class="table table-responsive-sm table-bordered table-striped table-sm">
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Nama</th>
-                                            <th>Description</th>
+                                            <th>Username</th>
+                                            <th>Email</th>
+                                            <th>Password</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
-                    $no = 1;
-                    foreach ($Category as $category) {
-                      ?>
+                                        $no = 1;
+                                        foreach ($admin as $admin) {
+                                            ?>
                                         <tr>
                                             <td><?php echo $no++; ?></td>
-                                            <td><?php echo $category['name']; ?></td>
-                                            <td><?php echo $category['description']; ?></td>
+                                            <td><?php echo $admin['username']; ?></td>
+                                            <td><?php echo $admin['email'];    ?></td>
+                                            <td><?php echo $admin['password']; ?></td>
                                             <td>
-                                                <a href="<?php echo base_url('admin/category/update/' . $category['id']); ?>"
+                                                <a href="<?php echo base_url('Admin/edit_data/' . $admin['id']); ?>"
                                                     class="btn btn-success">Edit</a>
-                                                <a href="<?php echo base_url('admin/category/delete/' . $category['id']); ?>"
+                                                <a href="<?php echo base_url('Admin/deleteAdminAccount/' . $admin['id']); ?>"
                                                     class="btn btn-danger" onClick="">Hapus</a>
                                             </td>
                                         </tr>
