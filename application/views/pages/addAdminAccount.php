@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta name="description" content="SIMB Project">
     <meta name="author" content="Zero Squad">
-    <title>Admin Account</title>
+    <title>Tambah Admin</title>
     <?php $this->load->view('assets/stylesheet') ?>
 </head>
 
@@ -21,13 +21,13 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">Home</li>
                 <li class="breadcrumb-item">
-                    <a href="#">Admin</a>
+                    <a href="<?= base_url('admin/account') ?>">Data Admin</a>
                 </li>
-                <li class="breadcrumb-item active">Add Admin</li>
+                <li class="breadcrumb-item active">Tambah Admin</li>
                 <!-- Breadcrumb Menu-->
-                <li class="breadcrumb-menu d-md-down-none">
+                <!-- <li class="breadcrumb-menu d-md-down-none">
                     <div class="btn-group" role="group" aria-label="Button group">
-                        <a class="btn" href="#">
+                        <a class="btn" href="#"> 
                             <i class="icon-speech"></i>
                         </a>
                         <a class="btn" href="./">
@@ -35,43 +35,40 @@
                         <a class="btn" href="#">
                             <i class="icon-settings"></i>  Settings</a>
                     </div>
-                </li>
+                </li> -->
             </ol>
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <a href="<?php echo base_url('Category/index') ?>"><i class="nav-icon fa fa-arrow-left"></i> Back</a>
+                                <a href="<?php echo base_url('admin/account') ?>"><i class="nav-icon fa fa-arrow-left"></i> Kembali</a>
                             </div>
                             <div class="card-body">
                                 <form action="<?php echo base_url() ?>admin/proses_simpan_admin" method="post">
                                     <div class="form-group">
                                         <label for="nf-username">Username</label>
-                                        <input class="form-control" id="" type="text" name="username" placeholder="Enter Username...">
+                                        <input class="form-control" id="" type="text" name="username" placeholder="Masukkan Username" value="<?= set_value('username') ?>" required>
                                         <?= form_error('username') ?>
                                         <!-- <span class="help-block">Please enter your email</span> -->
                                     </div>
                                     <div class="form-group">
                                         <label for="nf-email">Email</label>
-                                        <input class="form-control" id="" type="text" name="email" placeholder="Enter email...">
+                                        <input class="form-control" id="" type="text" name="email" placeholder="Masukkan email" value="<?= set_value('email') ?>" required>
                                         <?= form_error('password') ?>
                                         <!-- <span class="help-block">Please enter your password</span> -->
                                     </div>
-                                    <div class="form-group">
+                                    <!-- <div class="form-group">
                                         <label for="nf-password">Password</label>
-                                        <input class="form-control" id="" type="password" name="pass" placeholder="Enter Password...">
+                                        <input class="form-control" id="" type="password" name="pass" placeholder="Enter Password..." value="<?= set_value('password') ?>" required>
                                         <?= form_error('password') ?>
-                                        <!-- <span class="help-block">Please enter your password</span> -->
-                                    </div>
-
-
-
+                                        <span class="help-block">Please enter your password</span>
+                                    </div> -->
                             </div>
                             <div class="card-footer">
-                                <input class="btn btn-sm btn-primary" type="submit" name="kirim">
+                                <input class="btn btn-sm btn-primary" type="submit" value="kirim" name="kirim">
                                 <!-- <i class="fa fa-dot-circle-o"></i> -->
-                                <input class="btn btn-sm btn-danger" type="reset" name="batal">
+                                <input class="btn btn-sm btn-danger" type="reset" value="batal" name="batal">
                                 <!-- <i class="fa fa-ban"></i> Reset</button> -->
                             </div>
                             </form>

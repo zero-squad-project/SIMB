@@ -12,7 +12,11 @@ class Admin extends Admin_Controller
     public function index()
     {
         if ($this->IsLoggedIn()) {
-            $this->load->view('pages/dashboard');
+            $data = array(
+                "admin" => $this->DataModel->getData('admin')->num_rows(),
+                "category" => $this->DataModel->getData('category')->num_rows()
+            );
+            $this->load->view('pages/dashboard',$data);
         } else {
             $this->load->view('pages/login');
         }
@@ -20,13 +24,21 @@ class Admin extends Admin_Controller
 
     public function account()
     {
-        $data["admin"] = $this->DataModel->getData('admin')->result_array();
-        $this->load->view('pages/adminAccount', $data);
+        if ($this->IsLoggedIn()) {
+            $data["admin"] = $this->DataModel->getData('admin')->result_array();
+            $this->load->view('pages/adminAccount', $data);
+        }else{
+            $this->load->view('pages/login');
+        }
     }
 
     public function addAdminAccount()
     {
-        $this->load->view('pages/addAdminAccount');
+        if($this->IsLoggedIn()){
+            $this->load->view('pages/addAdminAccount');
+        }else{
+            $this->load->view('pages/login');  
+        }
     }
 
     public function proses_simpan_admin()
@@ -65,9 +77,7 @@ class Admin extends Admin_Controller
 
     public function deleteAdminAccount($id)
     {
-
         $result = $this->DataModel->delete('id', $id, 'admin');
-
         if ($result) {
             redirect('admin/account');
         }
@@ -101,14 +111,8 @@ class Admin extends Admin_Controller
                 }
             }
         }
-
-
-
         $this->load->view('pages/editAdminAccount', $data);
     }
-
-
-
 
 
     public function change_password()
@@ -175,7 +179,7 @@ class Admin extends Admin_Controller
                 } else {
                     $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-dismissable">
                                                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                                        <p>Wrong Username or Password</p></div>');
+                                                        <p>Email atau password tidak dikenali</p></div>');
                     $this->load->view('pages/login');
                 }
             }
@@ -193,4 +197,5 @@ class Admin extends Admin_Controller
         $this->session->sess_destroy();
         redirect('admin/index', 'refresh');
     }
+
 }

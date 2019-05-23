@@ -20,6 +20,7 @@
                     <div class="card p-4">
                         <div class="card-body">
                             <h1>Login</h1>
+                            <?= $this->session->flashdata('pesan') ?>
                             <p class="text-muted">Sign In to your account</p>
                             <form action="<?= base_url('admin/login') ?>" method="POST">
                                 <div class="input-group mb-3">

@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta name="description" content="SIMB Project">
     <meta name="author" content="Zero Squad">
-    <title>Change Password Page</title>
+    <title> SIMB | Ubah Password</title>
     <?php $this->load->view('assets/stylesheet') ?>
 </head>
 
@@ -20,10 +20,7 @@
             <!-- Breadcrumb-->
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">Home</li>
-                <li class="breadcrumb-item">
-                    <a href="#">Admin</a>
-                </li>
-                <li class="breadcrumb-item active">Change Password</li>
+                <li class="breadcrumb-item active">Ubah Password</li>
                 <!-- Breadcrumb Menu-->
             </ol>
             <div class="container-fluid">
@@ -32,7 +29,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="card">
-                                <div class="card-header">Change Password</div>
+                                <div class="card-header">Ubah Password</div>
                                 <div class="card-body">
                                     <form action="<?= base_url('admin/change_password') ?>" method="POST">
                                         <div class="form-group">
@@ -43,7 +40,7 @@
                                                     </span>
                                                 </div>
                                                 <input class="form-control" id="username" type="password" name="pass_old"
-                                                    placeholder="Current Password">
+                                                    placeholder="Password Lama">
                                             </div>
                                             <?= form_error('pass_old') ?>
                                         </div>
@@ -55,12 +52,12 @@
                                                     </span>
                                                 </div>
                                                 <input class="form-control" id="password" type="password"
-                                                    name="pass_new" placeholder="New Password">
+                                                    name="pass_new" placeholder="Password Baru">
                                             </div>
                                             <?= form_error('pass_new') ?>
                                         </div>
                                         <div class="form-group form-actions">
-                                            <input type="submit" name="kirim" value="Submit" class="btn btn-md btn-success">
+                                            <input type="submit" name="kirim" value="Kirim" class="btn btn-md btn-success">
                                         </div>
                                     </form>
                                 </div>

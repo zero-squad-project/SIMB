@@ -24,7 +24,7 @@ class Category extends CI_Controller
 
         if ($this->input->post('kirim')) {
             $this->form_validation->set_rules('nama', 'Name', 'required');
-            $this->form_validation->set_rules('description', 'Description', 'required');
+            // $this->form_validation->set_rules('description', 'Description', 'required');
 
             if ($this->form_validation->run() == false) {
                 $this->load->view('pages/addCategory');
@@ -56,7 +56,7 @@ class Category extends CI_Controller
         $desc = $this->input->post('description');
         if ($this->input->post('kirim')) {
             $this->form_validation->set_rules('nama', 'New Name', 'required');
-            $this->form_validation->set_rules('description', 'New Description', 'required');
+            // $this->form_validation->set_rules('description', 'New Description', 'required');
 
             if ($this->form_validation->run() == false) {
                 $this->load->view('pages/editCategory', $data);

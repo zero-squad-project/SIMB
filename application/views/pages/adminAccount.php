@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <meta name="description" content="SIMB Project">
     <meta name="author" content="Zero Squad">
-    <title>Admin Account</title>
+    <title>SIMB | Data Admin</title>
     <?php $this->load->view('assets/stylesheet') ?>
 </head>
 
@@ -20,10 +20,7 @@
             <!-- Breadcrumb-->
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">Home</li>
-                <li class="breadcrumb-item">
-                    <a href="#">Admin</a>
-                </li>
-                <li class="breadcrumb-item active">Admin Account</li>
+                <li class="breadcrumb-item active">Data Admin</li>
                 <!-- Breadcrumb Menu-->
                 <li class="breadcrumb-menu d-md-down-none">
                     <div class="btn-group" role="group" aria-label="Button group">
@@ -43,8 +40,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <a href="<?php echo base_url('Admin/addAdminAccount') ?>"><i
-                                        class="nav-icon fa fa-plus"></i> Add
-                                    Admin Account</a>
+                                        class="nav-icon fa fa-plus"></i> Tambah Akun Admin</a>
                             </div>
                             <div class="card-body">
                                 <table class="table table-responsive-sm table-bordered table-striped table-sm">
@@ -53,7 +49,7 @@
                                             <th>No</th>
                                             <th>Username</th>
                                             <th>Email</th>
-                                            <th>Password</th>
+                                            <!-- <th>Password</th> -->
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -66,7 +62,7 @@
                                             <td><?php echo $no++; ?></td>
                                             <td><?php echo $admin['username']; ?></td>
                                             <td><?php echo $admin['email'];    ?></td>
-                                            <td><?php echo $admin['password']; ?></td>
+                                            <!-- <td><?php echo $admin['password']; ?></td> -->
                                             <td>
                                                 <a href="<?php echo base_url('Admin/edit_data/' . $admin['id']); ?>"
                                                     class="btn btn-success">Edit</a>
@@ -77,7 +73,7 @@
                                         <?php } ?>
                                     </tbody>
                                 </table>
-                                <nav>
+                                <!-- <nav>
                                     <ul class="pagination">
                                         <li class="page-item">
                                             <a class="page-link" href="#">Prev</a>
@@ -89,7 +85,7 @@
                                             <a class="page-link" href="#">Next</a>
                                         </li>
                                     </ul>
-                                </nav>
+                                </nav> -->
                             </div>
                         </div>
                     </div>

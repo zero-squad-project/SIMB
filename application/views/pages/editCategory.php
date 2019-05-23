@@ -23,7 +23,7 @@
         <li class="breadcrumb-item">
           <a href="#">Admin</a>
         </li>
-        <li class="breadcrumb-item active">Add Category</li>
+        <li class="breadcrumb-item active">Edit Category</li>
         <!-- Breadcrumb Menu-->
         <li class="breadcrumb-menu d-md-down-none">
           <div class="btn-group" role="group" aria-label="Button group">
@@ -48,13 +48,13 @@
                 <form action="" method="post">
                   <div class="form-group">
                     <label for="nf-email">Nama</label>
-                    <input class="form-control" id="" type="text" name="nama" placeholder="Enter Name..." value="<?php echo $category->name; ?>">
+                    <input class="form-control" id="" type="text" name="nama" placeholder="Enter Name..." value="<?php echo $category->name; ?>" required>
                     <?= form_error('nama') ?>
                     <!-- <span class="help-block">Please enter your email</span> -->
                   </div>
                   <div class="form-group">
                     <label for="nf-password">Description</label>
-                    <input class="form-control" id="" type="text-area" name="description" placeholder="Enter Description..." value="<?php echo $category->description; ?>">
+                    <textarea rows="10" class="form-control" id="" type="text-area" name="description" placeholder="Enter Description..." required><?php echo $category->description; ?></textarea>
                     <?= form_error('description') ?>
                     <!-- <span class="help-block">Please enter your password</span> -->
                   </div>
