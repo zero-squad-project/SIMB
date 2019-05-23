@@ -47,10 +47,10 @@
                                 <table class="table table-responsive-sm table-bordered table-striped table-sm">
                                     <thead>
                                         <tr>
-                                            <th>No</th>
-                                            <th>Nama</th>
+                                            <th width="35px">No</th>
+                                            <th width="120px">Nama</th>
                                             <th width="600px">Deskripsi</th>
-                                            <th>Aksi</th>
+                                            <th width="95px">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -63,10 +63,14 @@
                                             <td><?php echo $category['name']; ?></td>
                                             <td><?php echo $category['description']; ?></td>
                                             <td>
-                                                <a href="#"
-                                                    class="btn btn-success" data-toggle="modal" data-target="#editModal">Edit</a>
-                                                <a href="#"
-                                                    class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Hapus</a>
+                                                <span id="edit" data-toggle="modal" data-target="#editModal" data-id="<?= $category['id'] ?>" >
+                                                    <button class="btn btn-success" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit Data" ><i class="nav-icon fa fa-edit"></i></button>
+                                                </span>
+                                                <span id="delete" data-toggle="modal" data-target="#deleteModal" data-id="<?= $category['id'] ?>" >
+                                                    <button class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="Hapus Data" ><i class="nav-icon fa fa-trash"></i></button>
+                                                </span>
+                                                <!-- <a href="#" class="btn btn-success" data-toggle="modal" data-target="#editModal">Edit</a>
+                                                <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Hapus</a> -->
                                             </td>
                                         </tr>
                                         <?php } ?>
@@ -145,14 +149,14 @@
                         <div class="form-group">
                             <label for="nf-email">Nama</label>
                             <input class="form-control" id="" type="text" name="nama"
-                                placeholder="Masukkan Nama Kategori" value="<?php //echo $category->name; ?>" required>
+                                placeholder="Masukkan Nama Kategori" value="<?php echo $category['name']; ?>" required>
                             <?php //echo form_error('nama') ?>
                             <!-- <span class="help-block">Please enter your email</span> -->
                         </div>
                         <div class="form-group">
                             <label for="nf-password">Deskripsi (optional)</label>
                             <textarea rows="10" class="form-control" id="" type="text-area" name="description"
-                                placeholder="Masukkan Deskripsi Kategori"><?php //echo $category->description; ?></textarea>
+                                placeholder="Masukkan Deskripsi Kategori"><?php echo $category['description']; ?></textarea>
                             <?php //echo form_error('description') ?>
                             <!-- <span class="help-block">Please enter your password</span> -->
                         </div>
@@ -189,6 +193,7 @@
         </div>
     </div>
     <?php $this->load->view('assets/javascript') ?>
+    <script src="<?= base_url() ?>assets/js/tooltips.js"></script>
 </body>
 
 </html>
