@@ -25,6 +25,18 @@ class Products extends Admin_Controller
         }
     }
 
+    public function detail($id){
+        if ($this->IsLoggedIn()) {
+            $barang = $this->DataModel->getWhere('idBarang',$id);
+            $barang = $this->DataModel->getJoin('category','barang.idKategori = category.id','inner');
+            $barang = $this->DataModel->getData('barang')->row();
+            $data = array("barang" => $barang);
+            $this->load->view('pages/detailBarang',$data);
+        }else{
+            $this->load->view('pages/login');
+        }
+    }
+
     public function tambah()
     {
         if ($this->IsLoggedIn()) {

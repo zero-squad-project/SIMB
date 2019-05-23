@@ -58,6 +58,7 @@
                                                     <td><?php echo $bar['stok']; ?></td>
                                                     <td><?php echo $bar['satuan']; ?></td>
                                                     <td>
+                                                        <a href="<?=base_url('products/detail/'.$bar['idBarang'])?>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Detail Data" class="btn btn-primary"><i class="nav-icon fa fa-eye"></i></a> 
                                                         <a href="<?=base_url('products/ubah/'.$bar['idBarang'])?>" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit Data" class="btn btn-success" data-toggle="modal" data-target="#editModal"><i class="nav-icon fa fa-edit"></i></a>
                                                         <span id="delete" data-toggle="modal" data-target="#deleteModal" data-id="<?= $bar['idBarang'] ?>" >
                                                             <button class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="Hapus Data" ><i class="nav-icon fa fa-trash"></i></button>
