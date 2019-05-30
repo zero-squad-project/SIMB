@@ -45,7 +45,7 @@
                                         <b>Stok Barang : </b><pre><?=$barang->stok?></pre>
                                     <p>
                                     <p>
-                                        <b>Harga Jual : </b><pre><?=$barang->harga?></pre>
+                                        <b>Harga Jual : </b><pre><?php echo "Rp.".number_format($barang->harga,"2");?></pre>
                                     <p>
                                     <p>
                                         <b>Deskripsi Barang : </b><pre><?=$barang->keterangan?></pre>

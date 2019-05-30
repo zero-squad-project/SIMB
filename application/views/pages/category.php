@@ -39,9 +39,7 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <a class="btn btn-primary mb-1" data-toggle="modal" data-target="#primaryModal"
-                                    href="#"><i
-                                        class="nav-icon fa fa-plus"></i> Tambah Kategori</a>
+                                <a class="btn btn-primary mb-1" data-toggle="modal" data-target="#primaryModal" href="#"><i class="nav-icon fa fa-plus"></i> Tambah Kategori</a>
                             </div>
                             <div class="card-body">
                                 <table class="table table-responsive-sm table-bordered table-striped table-sm">
@@ -55,24 +53,54 @@
                                     </thead>
                                     <tbody>
                                         <?php
-                                            $no = 1;
-                                            foreach ($Category as $category) {
-                                        ?>
-                                        <tr>
-                                            <td><?php echo $no++; ?></td>
-                                            <td><?php echo $category['name']; ?></td>
-                                            <td><?php echo $category['description']; ?></td>
-                                            <td>
-                                                <span id="edit" data-toggle="modal" data-target="#editModal" data-id="<?= $category['id'] ?>" >
-                                                    <button class="btn btn-success" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit Data" ><i class="nav-icon fa fa-edit"></i></button>
-                                                </span>
-                                                <span id="delete" data-toggle="modal" data-target="#deleteModal" data-id="<?= $category['id'] ?>" >
-                                                    <button class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="Hapus Data" ><i class="nav-icon fa fa-trash"></i></button>
-                                                </span>
-                                                <!-- <a href="#" class="btn btn-success" data-toggle="modal" data-target="#editModal">Edit</a>
-                                                <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Hapus</a> -->
-                                            </td>
-                                        </tr>
+                                        $no = 1;
+                                        foreach ($Category as $category) {
+                                            ?>
+                                            <tr>
+                                                <td><?php echo $no++; ?></td>
+                                                <td><?php echo $category['name']; ?></td>
+                                                <td><?php echo $category['description']; ?></td>
+                                                <td>
+                                                    <span id="edit" data-toggle="modal" data-target="#editModal<?=$category['id']?>">
+                                                        <button class="btn btn-success" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit Data"><i class="nav-icon fa fa-edit"></i></button>
+                                                    </span>
+                                                    <span id="delete" data-toggle="modal" data-target="#deleteModal" data-id="<?= $category['id'] ?>">
+                                                        <button class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="Hapus Data"><i class="nav-icon fa fa-trash"></i></button>
+                                                    </span>
+                                                    <!-- <a href="#" class="btn btn-success" data-toggle="modal" data-target="#editModal">Edit</a>
+                                                        <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">Hapus</a> -->
+                                                </td>
+                                                <div class="modal fade" id="editModal<?=$category['id']?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog modal-success" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h4 class="modal-title">Edit Kategori</h4>
+                                                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">×</span>
+                                                                </button>
+                                                            </div>
+                                                            <form action="<?= base_url('category/editCategory/'.$category['id']) ?>" method="post">
+                                                                <div class="modal-body">
+                                                                    <div class="form-group">
+                                                                        <label for="nf-email">Nama</label>
+                                                                        <input class="form-control" id="" type="text" name="nama" placeholder="Masukkan Nama Kategori" value="<?php echo $category['name']; ?>" required>
+                                                                        <!-- <span class="help-block">Please enter your email</span> -->
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="nf-password">Deskripsi (optional)</label>
+                                                                        <textarea rows="10" class="form-control" id="" type="text-area" name="description" placeholder="Masukkan Deskripsi Kategori"><?php echo $category['description']; ?></textarea>
+                                                                        <!-- <span class="help-block">Please enter your password</span> -->
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+                                                                    <input class="btn btn-success" type="submit" name="kirim" value="kirim">
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </tr>
                                         <?php } ?>
                                     </tbody>
                                 </table>
@@ -97,8 +125,7 @@
             </div>
         </main>
     </div>
-    <div class="modal fade" id="primaryModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="primaryModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-primary" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -111,15 +138,13 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="nf-email">Nama</label>
-                            <input class="form-control" id="" type="text" name="nama"
-                                placeholder="Masukkan Nama kategori" value="<?= set_value('nama') ?>" required>
+                            <input class="form-control" id="" type="text" name="nama" placeholder="Masukkan Nama kategori" value="<?= set_value('nama') ?>" required>
                             <?= form_error('nama') ?>
                             <!-- <span class="help-block">Please enter your email</span> -->
                         </div>
                         <div class="form-group">
                             <label for="nf-password">Description (optional)</label>
-                            <textarea class="form-control" rows="5" id="" type="text" name="description"
-                                placeholder="Masukkan Deskripsi"><?= set_value('description') ?></textarea>
+                            <textarea class="form-control" rows="5" id="" type="text" name="description" placeholder="Masukkan Deskripsi"><?= set_value('description') ?></textarea>
                             <?= form_error('description') ?>
                             <!-- <span class="help-block">Please enter your password</span> -->
                         </div>
@@ -134,43 +159,7 @@
         </div>
         <!-- /.modal-dialog-->
     </div>
-    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-success" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Edit Kategori</h4>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <form action="<?= base_url('category/eddCategory/') ?>" method="post">
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="nf-email">Nama</label>
-                            <input class="form-control" id="" type="text" name="nama"
-                                placeholder="Masukkan Nama Kategori" value="<?php echo $category['name']; ?>" required>
-                            <?php //echo form_error('nama') ?>
-                            <!-- <span class="help-block">Please enter your email</span> -->
-                        </div>
-                        <div class="form-group">
-                            <label for="nf-password">Deskripsi (optional)</label>
-                            <textarea rows="10" class="form-control" id="" type="text-area" name="description"
-                                placeholder="Masukkan Deskripsi Kategori"><?php echo $category['description']; ?></textarea>
-                            <?php //echo form_error('description') ?>
-                            <!-- <span class="help-block">Please enter your password</span> -->
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
-                        <input class="btn btn-success" type="submit" name="kirim" value="kirim">
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-danger" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -193,6 +182,12 @@
         </div>
     </div>
     <?php $this->load->view('assets/javascript') ?>
+    <script>
+        $(document).on("click", "#delete", function() {
+            var id = $(this).data('id');
+            $('input[name="id"]').val(id);
+        });
+    </script>
     <script src="<?= base_url() ?>assets/js/tooltips.js"></script>
 </body>
 

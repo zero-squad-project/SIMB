@@ -34,7 +34,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <?= $this->session->flashdata('pesan') ?>
-                                <a class="btn btn-primary mb-1" href="<?= base_url('products/tambah') ?>"><i
+                                <a class="btn btn-primary mb-1" href="<?= base_url('transaksi/tambah_bm') ?>"><i
                                         class="nav-icon fa fa-plus"></i> Barang Masuk</a>
                             </div>
                             <div class="card-body">

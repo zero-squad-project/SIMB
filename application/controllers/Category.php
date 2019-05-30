@@ -1,6 +1,6 @@
 <?php
 
-class Category extends CI_Controller
+class Category extends Admin_Controller
 {
 
     public function __construct()
@@ -11,83 +11,98 @@ class Category extends CI_Controller
 
     public function index()
     {
-        $data["Category"] = $this->DataModel->getData('category')->result_array();
-        $this->load->view('pages/Category', $data);
-
-        //echo json_encode($data);
+        if ($this->IsLoggedIn()) {
+            $data["Category"] = $this->DataModel->getData('category')->result_array();
+            $this->load->view('pages/Category', $data);
+        } else {
+            $this->load->view('pages/login');
+        }
+        // echo json_encode($data);
     }
 
     public function addCategory()
     {
-        $nama = $this->input->post('nama');
-        $desc = $this->input->post('description');
+        if ($this->IsLoggedIn()) {
+            $nama = $this->input->post('nama');
+            $desc = $this->input->post('description');
 
-        if ($this->input->post('kirim')) {
-            $this->form_validation->set_rules('nama', 'Name', 'required');
-            // $this->form_validation->set_rules('description', 'Description', 'required');
+            if ($this->input->post('kirim')) {
+                $this->form_validation->set_rules('nama', 'Name', 'required');
+                // $this->form_validation->set_rules('description', 'Description', 'required');
 
-            if ($this->form_validation->run() == false) {
-                $this->load->view('pages/addCategory');
-            } else {
-                $data = array(
-                    "name" => $nama,
-                    "description" => $desc,
-                    "created_at" => date('Y-m-d G:i:s')
-                );
+                if ($this->form_validation->run() == false) {
+                    $this->load->view('pages/addCategory');
+                } else {
+                    $data = array(
+                        "name" => $nama,
+                        "description" => $desc,
+                        "created_at" => date('Y-m-d G:i:s')
+                    );
 
-                $result = $this->DataModel->insert("category", $data);
-                // var_dump ($data);
+                    $result = $this->DataModel->insert("category", $data);
+                    // var_dump ($data);
 
-                if ($result) {
-                    redirect('category/index');
+                    if ($result) {
+                        redirect('category/index');
+                    }
                 }
+            } else {
+                $this->load->view('pages/addCategory');
             }
         } else {
-            $this->load->view('pages/addCategory');
+            $this->load->view('pages/login');
         }
     }
 
     public function editCategory($id)
     {
-        $data['category'] = $this->DataModel->getWhere('id', $id);
-        $data['category'] = $this->DataModel->getData('category')->row();
+        if ($this->IsLoggedIn()) {
+            $data['category'] = $this->DataModel->getWhere('id', $id);
+            $data['category'] = $this->DataModel->getData('category')->row();
 
-        $nama = $this->input->post('nama');
-        $desc = $this->input->post('description');
-        if ($this->input->post('kirim')) {
-            $this->form_validation->set_rules('nama', 'New Name', 'required');
-            // $this->form_validation->set_rules('description', 'New Description', 'required');
+            $nama = $this->input->post('nama');
+            $desc = $this->input->post('description');
+            if ($this->input->post('kirim')) {
+                $this->form_validation->set_rules('nama', 'New Name', 'required');
+                // $this->form_validation->set_rules('description', 'New Description', 'required');
 
-            if ($this->form_validation->run() == false) {
-                $this->load->view('pages/editCategory', $data);
-            } else {
-                $data = array(
-                    "name" => $nama,
-                    "description" => $desc,
-                    "updated_at" => date('Y-m-d G:i:s')
-                );
+                if ($this->form_validation->run() == false) {
+                    $this->load->view('pages/editCategory', $data);
+                } else {
+                    $data = array(
+                        "name" => $nama,
+                        "description" => $desc,
+                        "updated_at" => date('Y-m-d G:i:s')
+                    );
 
-                $result = $this->DataModel->getWhere('id', $id);
-                $result = $this->DataModel->update("category", $data);
-                // var_dump ($data);
+                    $result = $this->DataModel->getWhere('id', $id);
+                    $result = $this->DataModel->update("category", $data);
+                    // var_dump ($data);
 
-                if ($result) {
-                    redirect('category/index');
+                    if ($result) {
+
+                        redirect('category/index');
+                    }
                 }
+            } else {
+                $this->load->view('pages/editCategory', $data);
             }
         } else {
-            $this->load->view('pages/editCategory', $data);
+            $this->load->view('pages/login');
         }
     }
 
-    public function deleteCategory($id)
+    public function deleteCategory()
     {
-
-        // $this->DataModel->getWhere('id', $id);
-        $result = $this->DataModel->delete('id', $id, 'category');
-
-        if ($result) {
-            redirect('category');
+        if($this->IsLoggedIn()){
+            $id = $this->input->post('id');
+            // $this->DataModel->getWhere('id', $id);
+            $result = $this->DataModel->delete('id', $id, 'category');
+            if ($result) {
+                redirect('category');
+            }
+        }else{
+            $this->load->view('pages/login');
         }
     }
 }

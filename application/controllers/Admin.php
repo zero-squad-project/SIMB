@@ -12,10 +12,21 @@ class Admin extends Admin_Controller
     public function index()
     {
         if ($this->IsLoggedIn()) {
+            $tgl = date("Y-m-d");
+            $bm = $this->DataModel->select("(select sum(jumlah)) as stok");
+            $bm = $this->DataModel->getWhere('tanggal_masuk',$tgl);
+            $bm = $this->DataModel->getData('barang_masuk')->row();
+            $bk = $this->DataModel->select("(select sum(jumlah)) as stok");
+            $bk = $this->DataModel->getWhere('tanggal_keluar',$tgl);
+            $bk = $this->DataModel->getData('barang_keluar')->row();
+            $barang = $this->DataModel->custom("select sum(stok) as jumlah from barang ")->row();
             $data = array(
                 "admin" => $this->DataModel->getData('admin')->num_rows(),
-                "category" => $this->DataModel->getData('category')->num_rows()
+                "barang" => $barang->jumlah,
+                "bm" => $bm->stok,
+                "bk" => $bk->stok
             );
+            // die(json_encode($data));
             $this->load->view('pages/dashboard',$data);
         } else {
             $this->load->view('pages/login');
