@@ -68,6 +68,7 @@
                                             <th>Tanggal Masuk</th>
                                             <th>Harga Satuan</th>
                                             <th>Jumlah Masuk</th>
+                                            <th>Stok</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -84,17 +85,18 @@
                                             <td><?php echo date("d-m-Y", strtotime($bar['tanggal_masuk'])); ?></td>
                                             <td><?php echo $bar['hargaSatuan']?></td>
                                             <td><?php echo $bar['jumlah']; ?></td>
+                                            <td><?php echo $bar['stok'];?></td>
                                             <td>
-                                                <span id="delete" data-toggle="modal" data-target="#addModal"
-                                                    data-id="<?= $bar['idBarang'] ?>">
+                                                <span id="edit" data-toggle="modal" data-target="#ubahModal"
+                                                    data-id="<?= $bar['idBM'] ?>" data-idb="<?=$bar['idBarang']?>" data-jumlah="<?= $bar['jumlah'] ?>">
                                                 <button 
                                                     data-toggle="tooltip" data-placement="top" title=""
-                                                    data-original-title="Tambah Stok" class="btn btn-primary"
-                                                    data-toggle="modal" data-target="#editModal"><i
+                                                    data-original-title="Tambah Jumlah Masuk" class="btn btn-primary"
+                                                    ><i
                                                         class="nav-icon fa fa-plus"></i></button>
                                                 </span>
                                                 <span id="delete" data-toggle="modal" data-target="#deleteModal"
-                                                    data-id="<?= $bar['idBarang'] ?>">
+                                                    data-id="<?= $bar['idBM'] ?>" data-idb="<?=$bar['idBarang'] ?>" data-stok="<?=$bar['jumlah']?>">
                                                     <button class="btn btn-danger" data-toggle="tooltip"
                                                         data-placement="top" title=""
                                                         data-original-title="Hapus Data"><i
@@ -103,10 +105,10 @@
                                             </td>
                                         </tr>
                                         <?php }
-                                    } else {
+                                        } else {
                                         ?>
                                         <tr>
-                                            <td colspan="7">
+                                            <td colspan="8">
                                                 <center>Data Tidak ada</center>
                                             </td>
                                         </tr>
@@ -121,7 +123,72 @@
             </div>
         </main>
     </div>
+    <div class="modal fade" id="ubahModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-primary" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Tambah Jumlah Masuk</h4>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <form action="<?= base_url('transaksi/ubah_bm') ?>" method="post">
+                    <div class="modal-body">
+                        <input type="hidden" name="id">
+                        <input type="hidden" name="idBarang">
+                        <input type="number" name="jumlah" class="form-control" placeholder="Masukkan Jumlah Masuk" required>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+                        <input class="btn btn-primary" type="submit" name="kirim" value="Kirim">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-danger" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Hapus Barang</h4>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <form action="<?= base_url('transaksi/hapus_bm') ?>" method="post">
+                    <div class="modal-body">
+                        <input type="hidden" name="id">
+                        <input type="hidden" name="idBarang">
+                        <input type="hidden" name="stok">
+                        Apakah anda yakin menghapus data ini?
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+                        <input class="btn btn-danger" type="submit" name="kirim" value="Ya!">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     <?php $this->load->view('assets/javascript') ?>
+    <script>
+        $(document).on("click", "#delete", function() {
+            var id = $(this).data('id');
+            var idB = $(this).data('idb');
+            var stok = $(this).data('stok');
+            $('input[name="id"]').val(id);
+            $('input[name="idBarang"').val(idB);
+            $('input[name="stok"').val(stok);
+        });
+        $(document).on("click","#edit", function(){
+            var id = $(this).data('id');
+            var idB = $(this).data('idb');
+            var jml = $(this).data('jumlah');
+            $('input[name="id"]').val(id);
+            $('input[name="idBarang"').val(idB);
+            $('input[name="jumlah"]').val(jml);
+        });
+    </script>
     <script src="<?= base_url() ?>assets/js/tooltips.js"></script>
 </body>
 

@@ -190,10 +190,10 @@ class Products extends Admin_Controller
     {
         $this->form_validation->set_rules('nama', 'Nama Barang', 'required');
         $this->form_validation->set_rules('id', 'ID Barang', 'required');
-        $this->form_validation->set_rules('satuan', 'Satuan Barang', 'required');
+        // $this->form_validation->set_rules('satuan', 'Satuan Barang', 'required');
         $this->form_validation->set_rules('stok', 'Stok Barang', 'required');
         $this->form_validation->set_rules('min_stok', 'Minimal Stok Barang', 'required');
-        $this->form_validation->set_rules('harga_jual', 'Harga Jual Produk', 'required');
+        $this->form_validation->set_rules('harga', 'Harga Beli Produk', 'required');
     }
 
     private function _initComponent()
@@ -201,10 +201,10 @@ class Products extends Admin_Controller
         $this->nama = $this->input->post('nama');
         $this->id = $this->input->post('id');
         $this->kategori = $this->input->post('kategori');
-        $this->satuan = $this->input->post('satuan');
+        $this->satuan = "pcs";
         $this->stok = $this->input->post('stok');
         $this->minStok = $this->input->post('min_stok');
-        $this->harga = $this->input->post('harga_jual');
+        $this->harga = $this->input->post('harga');
         $this->ket = $this->input->post('ket');
         $foto = str_replace(" ","_",$this->id);
         $this->foto = $foto."_".$this->kategori;

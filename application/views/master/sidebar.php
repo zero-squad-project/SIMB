@@ -27,17 +27,17 @@
                     <i class="nav-icon icon-basket-loaded"></i> Transaksi</a>
                 <ul class="nav-dropdown-items">
                     <li class="nav-item">
-                        <a class="nav-link" style="padding-left:30px" href="<?=base_url('Transaksi/barang_masuk')?>">
+                        <a class="nav-link" style="padding-left:30px" href="<?=base_url('transaksi/barang_masuk')?>">
                             <i class="nav-icon icon-action-undo"></i> Barang Masuk</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" style="padding-left:30px" href="<?=base_url('Transaksi/barang_keluar')?>">
+                        <a class="nav-link" style="padding-left:30px" href="<?=base_url('transaksi/barang_keluar')?>">
                             <i class="nav-icon icon-action-redo"></i> Barang Keluar</a>
                     </li>
                 </ul>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?= base_url() ?>Transaksi/laporan">
+                <a class="nav-link" href="<?= base_url() ?>transaksi/laporan">
                     <i class="nav-icon fa fa-file"></i> Laporan
                 </a>
             </li>

@@ -67,14 +67,6 @@
                                             <!-- <span class="help-block">Please enter your email</span> -->
                                         </div>
                                         <div class="form-group">
-                                            <label for="nf-email">Satuan</label>
-                                            <input class="form-control" id="" type="text" name="satuan"
-                                                placeholder="Masukkan Satuan Barang" value="<?= $barang->satuan ?>"
-                                                required>
-                                            <?= form_error('satuan') ?>
-                                            <!-- <span class="help-block">Please enter your email</span> -->
-                                        </div>
-                                        <div class="form-group">
                                             <label for="nf-email">Foto</label>
                                             <input class="form-control" id="" type="file" name="foto" accept="image/png,image/jpg,image/jpeg">
                                             <?= form_error('satuan') ?>
@@ -99,9 +91,9 @@
                                             <!-- <span class="help-block">Please enter your email</span> -->
                                         </div>
                                         <div class="form-group">
-                                            <label for="nf-email">Harga Jual</label>
-                                            <input class="form-control" id="" type="number" name="harga_jual"
-                                                placeholder="Masukkan Harga Jual Barang"
+                                            <label for="nf-email">Harga Beli</label>
+                                            <input class="form-control" id="" type="number" name="harga"
+                                                placeholder="Masukkan Harga Beli Barang"
                                                 value="<?= $barang->harga ?>" required>
                                             <?= form_error('harga') ?>
                                             <!-- <span class="help-block">Please enter your email</span> -->

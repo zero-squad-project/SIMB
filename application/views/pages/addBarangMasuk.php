@@ -57,18 +57,6 @@
                                             <!-- <span class="help-block">Please enter your email</span> -->
                                         </div>
                                         <div class="form-group">
-                                            <label for="nf-email">No Faktur (jika ada)</label>
-                                            <input class="form-control" id="" type="text" name="faktur" placeholder="Masukkan No. Faktur" value="<?= set_value('faktur') ?>">
-                                            <?= form_error('faktur') ?>
-                                            <!-- <span class="help-block">Please enter your email</span> -->
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="nf-email">Supplier (jika ada)</label>
-                                            <input class="form-control" id="" type="text" name="supplier" placeholder="Masukkan Nama Supplier" value="<?= set_value('supplier') ?>">
-                                            <?= form_error('supplier') ?>
-                                            <!-- <span class="help-block">Please enter your email</span> -->
-                                        </div>
-                                        <div class="form-group">
                                             <label for="nf-email">Tanggal Masuk</label>
                                             <input class="form-control" id="" type="date" name="tgl" value="<?= set_value('tgl') ?>" required>
                                             <?= form_error('tgl') ?>
@@ -83,11 +71,23 @@
                                             <!-- <span class="help-block">Please enter your email</span> -->
                                         </div>
                                         <div class="form-group">
+                                            <label for="nf-email">No Faktur (jika ada)</label>
+                                            <input class="form-control" id="" type="text" name="faktur" placeholder="Masukkan No. Faktur" value="<?= set_value('faktur') ?>">
+                                            <?= form_error('faktur') ?>
+                                            <!-- <span class="help-block">Please enter your email</span> -->
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="nf-email">Supplier (jika ada)</label>
+                                            <input class="form-control" id="" type="text" name="supplier" placeholder="Masukkan Nama Supplier" value="<?= set_value('supplier') ?>">
+                                            <?= form_error('supplier') ?>
+                                            <!-- <span class="help-block">Please enter your email</span> -->
+                                        </div>
+                                        <!-- <div class="form-group">
                                             <label for="nf-email">Harga Jual / Barang</label>
                                             <input class="form-control" id="harga" type="number" name="harga" placeholder="Rp xxx.xxx.xxx" value="<?= set_value('harga_jual') ?>" required>
                                             <?= form_error('min_stok') ?>
-                                            <!-- <span class="help-block">Please enter your email</span> -->
-                                        </div>
+                                            <span class="help-block">Please enter your email</span>
+                                        </div> -->
                                         <!-- <div class="form-group">
                                             <label for="nf-email">Total</label>
                                             <input class="form-control" id="harga" type="number" name="total" placeholder="Rp xxx.xxx.xxx" value="<?= set_value('total') ?>" required>

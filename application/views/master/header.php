@@ -19,8 +19,8 @@
                 <div class="dropdown-header text-center">
                     <strong>Settings</strong>
                 </div>
-                <a class="dropdown-item" href="#">
-                    <i class="fa fa-user"></i> Profile</a>
+                <!-- <a class="dropdown-item" href="#">
+                    <i class="fa fa-user"></i> Profile</a> -->
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="<?= base_url(); ?>admin/logout">
                     <i class="fa fa-lock"></i> Logout</a>
