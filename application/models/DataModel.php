@@ -52,6 +52,17 @@ class DataModel extends CI_Model
         return $query;
     }
 
+    public function insert_multiple($table,$data)
+    {
+        $query = $this->db->insert_batch($table, $data);
+        return $query;
+    }
+
+    public function update_multiple($table,$data,$id){
+        $query = $this->db->update_batch($table,$data,$id);
+        return $query;
+    }
+
     function update($table, $data)
     {
         $query = $this->db->update($table, $data);

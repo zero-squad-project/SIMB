@@ -39,8 +39,8 @@
                                         <a class="btn btn-primary" href="<?= base_url('transaksi/tambah_bk') ?>"><i class="nav-icon fa fa-plus"></i> Barang Keluar</a>
                                         <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Import</button>
                                         <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-19px, 35px, 0px);">
-                                            <a class="dropdown-item" href="#"><i class="fa fa-excel"></i>Excel</a>
-                                            <a class="dropdown-item" href="#"><i class=""></i>CSV</a>
+                                            <!-- <a class="dropdown-item" href="#"><i class="fa fa-excel"></i>Excel</a> -->
+                                            <a class="dropdown-item" href="<?=base_url('transaksi/import');?>"><i class=""></i>CSV</a>
                                         </div>
                                     </div>
                                 </div>
@@ -105,7 +105,7 @@
                                     } else {
                                         ?>
                                             <tr>
-                                                <td colspan="7">
+                                                <td colspan="8">
                                                     <center>Data Tidak ada</center>
                                                 </td>
                                             </tr>

@@ -69,7 +69,15 @@ class Products extends Admin_Controller
                                 "keterangan" => $this->ket,
                                 "foto" => $this->foto . "." . $eks
                             );
+                            $data_bm = array(
+                                "idBarang" => $this->id,
+                                "jumlah" => $this->stok,
+                                "tanggal_masuk" => date('Y-m-d H:i:s'),
+                                "hargaSatuan" => $this->harga,
+                                "total" => $this->harga * $this->stok,
+                            );
                             $result = $this->DataModel->insert('barang', $data);
+                            $result = $this->DataModel->insert('barang_masuk',$data_bm);
                             if ($result) {
                                 $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissable">
                                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
